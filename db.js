@@ -8,6 +8,14 @@ export function getTodos() {
 }
 
 // Your DB functions go here
+export function deleteTodo(taskId) {
+  return db('todos').where('id', taskId).del()
+}
+
+export function addTodo(taskText) {
+  return db('todos').insert({ task: taskText })
+}
+
 export function close() {
   db.destroy()
 }
