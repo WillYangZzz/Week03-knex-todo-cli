@@ -7,6 +7,17 @@ const arg1 = userInputs[3]
 const arg2 = userInputs[4]
 
 switch (cmd) {
+  case 'help':
+    console.table([
+      { command: 'list' },
+      { command: 'add', arg1: 'task text' },
+      { command: 'done', arg1: 'task id' },
+      { command: 'undo', arg1: 'task id' },
+      { command: 'update', arg1: 'task id', arg2: 'new task text' },
+      { command: 'delete', arg1: 'task id' },
+      { command: 'search', arg1: 'task text' },
+    ])
+    break
   case 'list':
     await commands.list()
     break
@@ -30,5 +41,7 @@ switch (cmd) {
     break
 
   default:
-    console.log(`I don't understand that command: ${cmd}`)
+    console.log(
+      `'${cmd}' is not a valid command. Use 'help' to view available commands`
+    )
 }
