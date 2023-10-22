@@ -78,7 +78,11 @@ export async function updateTask(taskId, taskText) {
 export async function searchForTask(taskText) {
   try {
     const results = await searchTodos(taskText)
-    printTodos(results)
+    if (results.length > 0) {
+      printTodos(results)
+    } else {
+      console.log(`No tasks found containing '${taskText}'`)
+    }
   } catch (err) {
     logError(err)
   } finally {
