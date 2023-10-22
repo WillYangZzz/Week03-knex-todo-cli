@@ -10,7 +10,7 @@ switch (cmd) {
     break
   
   case 'done':
-    await commands.list()
+    await commands.deleteTask(userInputs[3])
     break
 
   default:

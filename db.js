@@ -12,3 +12,6 @@ export function close() {
   db.destroy()
 }
 
+export function deleteID(id) {
+  return db('todos').where('id', id).del()
+}
