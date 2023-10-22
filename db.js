@@ -16,6 +16,10 @@ export function addTodo(taskText) {
   return db('todos').insert({ task: taskText })
 }
 
+export function updateTodo(taskId, taskText) {
+  return db('todos').where('id', taskId).update({ task: taskText })
+}
+
 export function close() {
   db.destroy()
 }
