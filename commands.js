@@ -1,6 +1,8 @@
 import {
   getTodos,
   deleteTodo,
+  doTodo,
+  undoTodo,
   addTodo,
   updateTodo,
   searchTodos,
@@ -18,9 +20,31 @@ export async function list() {
   }
 }
 
-export async function completeTask(taskId) {
+export async function deleteTask(taskId) {
   try {
     await deleteTodo(taskId)
+    await list()
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function doTask(taskId) {
+  try {
+    await doTodo(taskId)
+    await list()
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function undoTask(taskId) {
+  try {
+    await undoTodo(taskId)
     await list()
   } catch (err) {
     logError(err)
@@ -64,7 +88,8 @@ export async function searchForTask(taskText) {
 
 function printTodos(todos) {
   todos.forEach((todo) => {
-    console.info(`${todo.id}: ${todo.task}`)
+    const checked = todo.isCompleted ? 'X' : ' '
+    console.info(`[${checked}] ${todo.id}: ${todo.task}`)
   })
 }
 

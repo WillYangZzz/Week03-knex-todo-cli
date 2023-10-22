@@ -10,8 +10,14 @@ switch (cmd) {
   case 'list':
     await commands.list()
     break
+  case 'delete':
+    await commands.deleteTask(arg1)
+    break
   case 'done':
-    await commands.completeTask(arg1)
+    await commands.doTask(arg1)
+    break
+  case 'undo':
+    await commands.undoTask(arg1)
     break
   case 'add':
     await commands.addTask(arg1)

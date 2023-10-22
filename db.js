@@ -12,6 +12,14 @@ export function deleteTodo(taskId) {
   return db('todos').where('id', taskId).del()
 }
 
+export function doTodo(taskId) {
+  return db('todos').where('id', taskId).update({ isCompleted: true })
+}
+
+export function undoTodo(taskId) {
+  return db('todos').where('id', taskId).update({ isCompleted: false })
+}
+
 export function addTodo(taskText) {
   return db('todos').insert({ task: taskText })
 }
