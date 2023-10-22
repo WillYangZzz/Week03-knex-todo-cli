@@ -20,6 +20,10 @@ export function updateTodo(taskId, taskText) {
   return db('todos').where('id', taskId).update({ task: taskText })
 }
 
+export function searchTodos(taskText) {
+  return db('todos').whereLike('task', `%${taskText}%`)
+}
+
 export function close() {
   db.destroy()
 }

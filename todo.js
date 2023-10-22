@@ -2,7 +2,6 @@
 import * as commands from './commands.js'
 
 const userInputs = process.argv
-console.table(userInputs)
 const cmd = userInputs[2]
 const arg1 = userInputs[3]
 const arg2 = userInputs[4]
@@ -20,6 +19,10 @@ switch (cmd) {
   case 'update':
     await commands.updateTask(arg1, arg2)
     break
+  case 'search':
+    await commands.searchForTask(arg1)
+    break
+
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }
