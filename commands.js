@@ -1,9 +1,19 @@
-import { getTodos, close } from './db.js'
+import { getTodos, close, deleteTask } from './db.js'
 
 export async function list() {
   try {
     const todos = await getTodos()
     printTodos(todos)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function removeTask(idTask) {
+  try {
+    await deleteTask(idTask)
   } catch (err) {
     logError(err)
   } finally {
@@ -20,4 +30,3 @@ function printTodos(todos) {
 function logError(err) {
   console.error('Uh oh!', err.message)
 }
-
