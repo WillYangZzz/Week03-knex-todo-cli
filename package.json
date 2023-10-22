@@ -9,7 +9,7 @@
   },
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "knex": "knex",
+    "knex": "knex --knexfile ./knexfile.js",
     "test": "vitest",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
