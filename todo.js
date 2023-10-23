@@ -3,7 +3,8 @@ import * as commands from './commands.js'
 
 const userInputs = process.argv
 const cmd = userInputs[2]
-const idDel = userInputs[3]
+const secondPara = userInputs[3]
+const thirdPara = userInputs[4]
 console.log(userInputs)
 
 switch (cmd) {
@@ -11,7 +12,19 @@ switch (cmd) {
     await commands.list()
     break
   case 'delete':
-    await commands.deleteData(idDel)
+    await commands.deleteData(secondPara)
+    break
+
+  case 'add':
+    await commands.addTaskCommand(secondPara)
+    break
+
+  case 'update':
+    await commands.updateTaskCommand(secondPara, thirdPara)
+    break
+
+  case 'search':
+    await commands.searchTaskCommand(secondPara)
     break
 
   default:
