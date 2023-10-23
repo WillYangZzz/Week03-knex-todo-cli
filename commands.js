@@ -1,4 +1,12 @@
-import { getTodos, close, deleteTask, addTask, updateCurrent } from './db.js'
+// Function imports from 'db.js'
+import {
+  getTodos,
+  close,
+  deleteTask,
+  addTask,
+  updateCurrent,
+  searchTask,
+} from './db.js'
 
 export async function list() {
   try {
@@ -12,6 +20,8 @@ export async function list() {
 }
 
 // This function is part of the system that can update tasks by id
+// This function is called from 'todo.js' with two inputs
+// This function then calls updateCurrent inside 'db.js'
 
 export async function updateTask(delAdd, changeTask) {
   try {
@@ -22,6 +32,10 @@ export async function updateTask(delAdd, changeTask) {
     close()
   }
 }
+
+//-----------------------------------------------------------
+
+//
 
 //-----------------------------------------------------------
 

@@ -10,14 +10,17 @@ switch (cmd) {
   case 'list':
     await commands.list()
     break
+  case 'search':
+    await commands.find(delAdd) //Search
+    break
   case 'delete':
-    await commands.removeTask(delAdd)
+    await commands.removeTask(delAdd) //Delete
     break
   case 'add':
-    await commands.giveTask(delAdd)
+    await commands.giveTask(delAdd) //Add Task
     break
   case 'update':
-    await commands.updateTask(delAdd, changeTask)
+    await commands.updateTask(delAdd, changeTask) //Change Task
     break
   default:
     console.log(`I don't understand that command: ${cmd}`)

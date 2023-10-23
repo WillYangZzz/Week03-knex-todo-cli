@@ -15,6 +15,8 @@ export async function addTask(str) {
   await db('todos').insert({ task: str })
 }
 
+export async function searchTask() {}
+
 // For updating a current task
 export async function updateCurrent(id, newTask) {
   await db('todos').where('id', id).update({ task: newTask })
