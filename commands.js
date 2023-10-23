@@ -78,14 +78,10 @@ export async function searchTask(search) {
 }
 
 export async function taskComplete(id) {
-  try {
-    await completed(id)
-    const todos = await getTodos()
+  await completed(id)
+  const todos = await getTodos()
 
-    printTodos(todos)
-  } catch (err) {
-    logError(err)
-  } finally {
-    close()
-  }
+  printTodos(todos)
+
+  close()
 }
