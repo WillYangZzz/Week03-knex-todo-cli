@@ -15,3 +15,7 @@ export function close() {
 export function deleteId(id) {
   return db('todos').where('id', id).del()
 }
+
+export function add(inputName) {
+  return db('todos').insert({ task: inputName })
+}

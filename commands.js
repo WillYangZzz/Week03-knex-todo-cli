@@ -1,4 +1,4 @@
-import { getTodos, close, deleteId } from './db.js'
+import { getTodos, close, deleteId, add } from './db.js'
 
 export async function list() {
   try {
@@ -24,6 +24,16 @@ function logError(err) {
 export async function done(id) {
   try {
     await deleteId(id)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function addTask(taskName) {
+  try {
+    await add(taskName)
   } catch (err) {
     logError(err)
   } finally {
