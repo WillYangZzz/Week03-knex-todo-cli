@@ -19,3 +19,9 @@ export function deleteID(id) {
 export function addTaskByString(string) {
   return db('todos').insert({task: string})
 }
+
+export function updateTaskByString(number, string) {
+  return db('todos').where({id: number}).update({task: string})
+}
+
+

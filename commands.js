@@ -1,4 +1,4 @@
-import { getTodos, close, deleteID, addTaskByString } from './db.js'
+import { getTodos, close, deleteID, addTaskByString, updateTaskByString } from './db.js'
 
 export async function list() {
   try {
@@ -36,6 +36,18 @@ export async function deleteTask(id) {
 export async function addTask(string) {
   try {
     await addTaskByString(string)
+    const todos = await getTodos()
+    printTodos(todos)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function updateTask(id, string) {
+  try {
+    await updateTaskByString(id, string)
     const todos = await getTodos()
     printTodos(todos)
   } catch (err) {
