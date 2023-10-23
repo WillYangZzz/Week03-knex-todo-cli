@@ -26,6 +26,23 @@ export async function searchTask(search) {
   return db('todos').select().whereLike('task', `%${search}%`)
 }
 
+export async function doneTask(id) {
+  return db('todos')
+    .select()
+    .where({ id: Number(id) })
+    .update({ complete: true })
+}
+
+export async function listDoneTasks() {
+  return await db('todos').select().where({ complete: true })
+}
+
+export async function listTodoTasks() {
+  return await db('todos')
+    .select()
+    .where({ complete: null } || { complete: false })
+}
+
 export function close() {
   db.destroy()
 }

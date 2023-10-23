@@ -5,6 +5,9 @@ import {
   addTask,
   updateTask,
   searchTask,
+  doneTask,
+  listDoneTasks,
+  listTodoTasks,
 } from './db.js'
 
 export async function list() {
@@ -20,7 +23,7 @@ export async function list() {
 
 function printTodos(todos) {
   todos.forEach((todo) => {
-    console.info(`${todo.id}: ${todo.task}`)
+    console.log(`${todo.id}: ${todo.task}: ${todo.complete}`)
   })
 }
 
@@ -48,6 +51,25 @@ export async function updateTaskCommand(id, task) {
 
 export async function searchTaskCommand(search) {
   console.log(await searchTask(search))
+
+  close()
+}
+
+export async function doneTaskCommand(id) {
+  await doneTask(id)
+  await list()
+
+  close()
+}
+
+export async function listDoneTasksCommand() {
+  console.log(await listDoneTasks())
+
+  close()
+}
+
+export async function listTodoTasksCommand() {
+  console.log(await listTodoTasks())
 
   close()
 }

@@ -5,7 +5,7 @@ const userInputs = process.argv
 const cmd = userInputs[2]
 const secondPara = userInputs[3]
 const thirdPara = userInputs[4]
-console.log(userInputs)
+// console.log(userInputs)
 
 switch (cmd) {
   case 'list':
@@ -25,6 +25,18 @@ switch (cmd) {
 
   case 'search':
     await commands.searchTaskCommand(secondPara)
+    break
+
+  case 'done':
+    await commands.doneTaskCommand(secondPara)
+    break
+
+  case 'donetasks':
+    await commands.listDoneTasksCommand()
+    break
+
+  case 'todotasks':
+    await commands.listTodoTasksCommand()
     break
 
   default:
