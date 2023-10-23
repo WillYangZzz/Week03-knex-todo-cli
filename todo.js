@@ -21,8 +21,10 @@ switch (cmd) {
     await commands.updateTask(userInputs[3], userInputs[4])
     break
 
+  case 'search':
+    await commands.searchTask(userInputs[3], userInputs[4])
+    break
+
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }
-
-console.log(userInputs)

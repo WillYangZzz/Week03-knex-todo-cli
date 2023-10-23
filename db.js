@@ -24,4 +24,7 @@ export function updateTaskByString(number, string) {
   return db('todos').where({id: number}).update({task: string})
 }
 
+export function searchTaskByString(string) {
+  return db('todos').whereLike('task', `%${string}%`)
+}
 
