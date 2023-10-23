@@ -8,7 +8,10 @@ export function getTodos() {
 }
 
 // Your DB functions go here
+export async function deleteTask(id) {
+  return db('todos').where('id', id).del()
+}
+
 export function close() {
   db.destroy()
 }
-
