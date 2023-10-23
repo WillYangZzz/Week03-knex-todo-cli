@@ -66,9 +66,12 @@ export async function updateTask(id, string) {
 export async function searchTask(string) {
   try {
    const search = await searchTaskByString(string)
-   console.log(search) 
-   // const todos = await getTodos()
-    // printTodos(todos)
+   const updateSearch = search.map((todo) => { 
+    const finish = done(todo.finished)
+    console.log(`${todo.id}: ${todo.task}. Finished: ${finish}`)
+    return
+   }
+    )
   } catch (err) {
     logError(err)
   } finally {
