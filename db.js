@@ -1,3 +1,4 @@
+// import { searchContent } from './commands.js'
 import knexfile from './knexfile.js'
 import knex from 'knex'
 
@@ -22,4 +23,8 @@ export function add(inputName) {
 
 export function updateTask(taskId, content) {
   return db('todos').where({ id: taskId }).update({ task: content })
+}
+
+export function searchTask(searchInput) {
+  return db('todos').whereLike('task', `%${searchInput}%`)
 }
