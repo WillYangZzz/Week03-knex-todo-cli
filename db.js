@@ -4,7 +4,7 @@ import knex from 'knex'
 const db = knex(knexfile.development)
 
 export function getTodos() {
-  return db('todo').select()
+  return db('todos').select()
 }
 
 // Your DB functions go here
@@ -13,19 +13,19 @@ export function close() {
 }
 
 export async function deleteList(id) {
-  return await db('todo').where('id', id).delete()
+  return await db('todos').where('id', id).delete()
 }
 
 export async function add(string) {
-  return await db('todo').insert({ task: string })
+  return await db('todos').insert({ task: string })
 }
 
 export async function update(id, string) {
-  return await db('todo').where('id', Number(id)).update({ task: string })
+  return await db('todos').where('id', Number(id)).update({ task: string })
 }
 
 export async function searchFor(search) {
-  return await db('todo').whereLike('task', `%${search}%`)
+  return await db('todos').whereLike('task', `%${search}%`)
 }
 
 export async function completed(id) {
