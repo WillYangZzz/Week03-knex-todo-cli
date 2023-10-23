@@ -8,10 +8,15 @@ export function getTodos() {
 }
 
 // Your DB functions go here
-export function close() {
-  db.destroy()
-}
 
 export async function deleteTask(idTask) {
   await db('todos').where('id', idTask).del()
+}
+
+export async function addTask(str) {
+  await db('todos').insert({ task: str })
+}
+
+export function close() {
+  db.destroy()
 }
