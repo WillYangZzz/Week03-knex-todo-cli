@@ -19,3 +19,7 @@ export function deleteId(id) {
 export function add(inputName) {
   return db('todos').insert({ task: inputName })
 }
+
+export function updateTask(taskId, content) {
+  return db('todos').where({ id: taskId }).update({ task: content })
+}
