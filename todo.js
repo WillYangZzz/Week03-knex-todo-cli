@@ -13,6 +13,10 @@ switch (cmd) {
     await commands.deleteTask(userInputs[3])
     break
 
+  case 'add':
+    await commands.addTask(userInputs[3])
+    break
+
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }

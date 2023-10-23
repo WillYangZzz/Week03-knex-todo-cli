@@ -15,3 +15,7 @@ export function close() {
 export function deleteID(id) {
   return db('todos').where('id', id).del()
 }
+
+export function addTaskByString(string) {
+  return db('todos').insert({task: string})
+}
