@@ -1,4 +1,4 @@
-import { getTodos, close, deleteID, addTaskByString, updateTaskByString, searchTaskByString } from './db.js'
+import { getTodos, close, finishByID, addTaskByString, updateTaskByString, searchTaskByString } from './db.js'
 
 export async function list() {
   try {
@@ -13,7 +13,8 @@ export async function list() {
 
 function printTodos(todos) {
   todos.forEach((todo) => {
-    console.info(`${todo.id}: ${todo.task}`)
+    const finished = done(todo.finished)
+    console.info(`${todo.id}: ${todo.task}.  Finished: ${finished}.`)
   })
 }
 
@@ -21,9 +22,14 @@ function logError(err) {
   console.error('Uh oh!', err.message)
 }
 
-export async function deleteTask(id) {
+function done (boolean) {
+  if (boolean == 1) return 'true' 
+  else return 'false'
+}
+
+export async function completeTask(id) {
   try {
-    await deleteID(id)
+    await finishByID(id)
     const todos = await getTodos()
     printTodos(todos)
   } catch (err) {

@@ -10,7 +10,7 @@ switch (cmd) {
     break
   
   case 'done':
-    await commands.deleteTask(userInputs[3])
+    await commands.completeTask(userInputs[3])
     break
 
   case 'add':
