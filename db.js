@@ -23,3 +23,7 @@ export function add(inputName) {
 export function updateTask(taskId, content) {
   return db('todos').where({ id: taskId }).update({ task: content })
 }
+
+export function taskComplete(taskId, completeStatus) {
+  return db('todos').where({ id: taskId }).update({ complete: completeStatus })
+}
