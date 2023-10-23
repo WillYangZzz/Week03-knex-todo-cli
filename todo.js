@@ -1,10 +1,24 @@
 #!/usr/bin/env node
+import prompt from 'prompt'
 import * as commands from './commands.js'
 
 const userInputs = process.argv
 const cmd = userInputs[2]
 const arg1 = userInputs[3]
 const arg2 = userInputs[4]
+
+async function getInput(message) {
+  prompt.message = message
+  prompt.start()
+
+  const result = await prompt.get({
+    name: 'confirm',
+  })
+
+  const response = result['confirm']
+
+  if (response) return response.toUpperCase()[0]
+}
 
 switch (cmd) {
   case 'help':
@@ -21,9 +35,11 @@ switch (cmd) {
   case 'list':
     await commands.list()
     break
-  case 'delete':
-    await commands.deleteTask(arg1)
+  case 'delete': {
+    const response = await getInput(`Delete task ${arg1}? Y/N`)
+    if (response === 'Y') await commands.deleteTask(arg1)
     break
+  }
   case 'done':
     await commands.doTask(arg1)
     break

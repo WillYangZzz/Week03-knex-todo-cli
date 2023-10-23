@@ -7,6 +7,10 @@ export function getTodos() {
   return db('todos').select()
 }
 
+export function getTodo(taskId) {
+  return db('todos').select('task').where('id', taskId)
+}
+
 // Your DB functions go here
 export function deleteTodo(taskId) {
   return db('todos').where('id', taskId).del()

@@ -1,5 +1,6 @@
 import {
   getTodos,
+  getTodo,
   deleteTodo,
   doTodo,
   undoTodo,
@@ -13,6 +14,16 @@ export async function list() {
   try {
     const todos = await getTodos()
     printTodos(todos)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function getTaskText(taskId) {
+  try {
+    return await getTodo(taskId)
   } catch (err) {
     logError(err)
   } finally {
