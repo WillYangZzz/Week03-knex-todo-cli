@@ -8,6 +8,8 @@ import {
   searchTask,
 } from './db.js'
 
+// This function is used to display the current list inside the db
+
 export async function list() {
   try {
     const todos = await getTodos()
@@ -18,6 +20,8 @@ export async function list() {
     close()
   }
 }
+
+//-----------------------------------------------------------
 
 // This function is part of the system that can update tasks by id
 // This function is called from 'todo.js' with two inputs
@@ -35,7 +39,19 @@ export async function updateTask(delAdd, changeTask) {
 
 //-----------------------------------------------------------
 
-//
+// This function part of the system to enable searching in the db
+// This function is called from 'todo.js' with one input
+// This function then calls 'searchTask' inside 'db.js'
+
+export async function find(delAdd) {
+  try {
+    await searchTask(delAdd)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
 
 //-----------------------------------------------------------
 

@@ -10,7 +10,7 @@ switch (cmd) {
   case 'list':
     await commands.list()
     break
-  case 'search':
+  case 'find':
     await commands.find(delAdd) //Search
     break
   case 'delete':

@@ -15,7 +15,11 @@ export async function addTask(str) {
   await db('todos').insert({ task: str })
 }
 
-export async function searchTask() {}
+// Search db 'task' collum by keyword
+export async function searchTask(result) {
+  const getResult = await db('todos').whereLike('task', `%${result}%`)
+  console.log(getResult)
+}
 
 // For updating a current task
 export async function updateCurrent(id, newTask) {
