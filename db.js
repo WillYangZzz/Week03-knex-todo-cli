@@ -13,7 +13,7 @@ export function close() {
 }
 
 export function deleteToDo(number) {
-  return db('todos').where({ id: number }).update('taskCompleted', ' true')
+  return db('todos').where({ id: number }).update('taskCompleted', true)
 }
 export function addingTask(string) {
   return db('todos').insert({ task: string })
