@@ -12,3 +12,6 @@ export function close() {
   db.destroy()
 }
 
+export async function deleteTodo(id) {
+  await db('todos').where('id', id).del()
+}
