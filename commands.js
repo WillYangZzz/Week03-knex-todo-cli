@@ -13,7 +13,11 @@ export async function list() {
 
 function printTodos(todos) {
   todos.forEach((todo) => {
-    console.info(`Id: ${todo.id}; Task: ${todo.task}; Completed?(1: yes, 0: no): ${todo.completed}`)
+    if (todo.completed === 1) {
+      console.info(`${todo.id}: ${todo.task}(completed)`)
+    } else {
+      console.info(`${todo.id}: ${todo.task}`)
+    }
   })
 }
 
@@ -24,6 +28,8 @@ function logError(err) {
 export async function deleteTaskCommand(id) {
   try {
     await deleteTask(id)
+    const todos = await getTodos()
+    printTodos(todos)
   } catch (err) {
     logError(err)
   } finally {
@@ -34,6 +40,8 @@ export async function deleteTaskCommand(id) {
 export async function addTaskCommand(task) {
   try {
     await addTask(task)
+    const todos = await getTodos()
+    printTodos(todos)
   } catch (err) {
     logError(err)
   } finally {
@@ -44,6 +52,8 @@ export async function addTaskCommand(task) {
 export async function updateTaskCommand(id, task) {
   try {
     await updateTask(id, task)
+    const todos = await getTodos()
+    printTodos(todos)
   } catch (err) {
     logError(err)
   } finally {
@@ -53,7 +63,8 @@ export async function updateTaskCommand(id, task) {
 
 export async function searchTaskCommand(searchValue) {
   try {
-    console.log(await searchTask(searchValue))
+    const value = await searchTask(searchValue)
+    value.forEach((item) => console.log(`${item.id}: ${item.task}`))
   } catch (err) {
     logError(err)
   } finally {
@@ -64,6 +75,8 @@ export async function searchTaskCommand(searchValue) {
 export async function completeTaskCommand(id) {
   try {
     await completeTask(id)
+    const todos = await getTodos()
+    printTodos(todos)
   } catch (err) {
     logError(err)
   } finally {

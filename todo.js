@@ -32,5 +32,5 @@ switch (cmd) {
     break
 
   default:
-    console.log(`I don't understand that command: ${cmd}`)
+    console.log(`I don't understand that command: ${cmd}. [./todo.js list] Listing all todos; [./todo.js delete 2] Delete one todo; [./todo.js add 'todo'] Add one todo; [./todo.js update 2 'new todo'] Update one todo; [./todo.js search 'search value'] Search todos; [./todo.js complet 2] Mark todo as completed`)
 }
