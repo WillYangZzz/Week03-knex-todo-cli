@@ -15,3 +15,7 @@ export function close() {
 export async function deleteTodo(id) {
   await db('todos').where('id', id).del()
 }
+
+export async function addTask(taskStr) {
+  await db('todos').insert({ task: taskStr })
+}

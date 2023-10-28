@@ -3,7 +3,7 @@ import * as commands from './commands.js'
 
 const userInputs = process.argv
 const cmd = userInputs[2]
-const select = userInputs[3]
+const arg3 = userInputs[3]
 
 switch (cmd) {
   case 'list':
@@ -11,7 +11,11 @@ switch (cmd) {
     break
 
   case 'delete':
-    await commands.deleteTask(select)
+    await commands.deleteTask(arg3)
+    break
+
+  case 'add':
+    await commands.add(arg3)
     break
 
   default:

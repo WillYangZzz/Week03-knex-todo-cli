@@ -1,4 +1,4 @@
-import { getTodos, close, deleteTodo } from './db.js'
+import { getTodos, close, deleteTodo, addTask } from './db.js'
 
 export async function list() {
   try {
@@ -19,6 +19,13 @@ export async function deleteTask(id) {
   }
 }
 
+export async function add(task) {
+  try {
+    await addTask(task)
+  } finally {
+    close()
+  }
+}
 function printTodos(todos) {
   todos.forEach((todo) => {
     console.info(`${todo.id}: ${todo.task}`)
