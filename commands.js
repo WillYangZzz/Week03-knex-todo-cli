@@ -32,6 +32,8 @@ export async function list() {
 export async function deleteTodo(id) {
   try {
     await deleteTask(id)
+    const todos = await getTodos()
+    printTodos(todos)
   } finally {
     close()
   }
@@ -40,6 +42,8 @@ export async function deleteTodo(id) {
 export async function add(newTask) {
   try {
     await addTask(newTask)
+    const todos = await getTodos()
+    printTodos(todos)
   } finally {
     close()
   }
@@ -48,6 +52,8 @@ export async function add(newTask) {
 export async function updateTodo(id, newTask) {
   try {
     await updateTask(id, newTask)
+    const todos = await getTodos()
+    printTodos(todos)
   } finally {
     close()
   }
@@ -65,6 +71,8 @@ export async function searchTodo(taskWord) {
 export async function completeTodo(id) {
   try {
     await completeTask(id)
+    const todos = await getTodos()
+    printTodos(todos)
   } finally {
     close()
   }
