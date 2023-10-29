@@ -23,3 +23,8 @@ export async function addTask(taskStr) {
 export async function updateTask(id, taskStr) {
   await db('todos').update({ task: taskStr }).where('id', id)
 }
+
+export async function searchTask(taskWord) {
+  // tried whereILike but not sure why it does not work, whereLike works case-insenstively which contradicts knex docs??
+  return await db('todos').whereLike('task', `%${taskWord}%`)
+}

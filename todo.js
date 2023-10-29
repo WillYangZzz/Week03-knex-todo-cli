@@ -23,6 +23,10 @@ switch (cmd) {
     await commands.updateTodo(arg3, arg4)
     break
 
+  case 'search':
+    await commands.searchTodo(arg3, arg4)
+    break
+
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }
