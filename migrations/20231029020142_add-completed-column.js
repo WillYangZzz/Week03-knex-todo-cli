@@ -1,6 +1,6 @@
 export function up(knex) {
   return knex.schema.alterTable('todos', (table) => {
-    table.boolean('completed')
+    table.boolean('completed').defaultTo(false)
   })
 }
 
