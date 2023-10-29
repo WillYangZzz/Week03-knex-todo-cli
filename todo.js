@@ -7,6 +7,10 @@ const arg3 = userInputs[3]
 const arg4 = userInputs[4]
 
 switch (cmd) {
+  case 'listAll':
+    await commands.listAll()
+    break
+
   case 'list':
     await commands.list()
     break
@@ -24,7 +28,10 @@ switch (cmd) {
     break
 
   case 'search':
-    await commands.searchTodo(arg3, arg4)
+    await commands.searchTodo(arg3)
+    break
+  case 'complete':
+    await commands.completeTodo(arg3)
     break
 
   default:

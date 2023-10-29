@@ -1,18 +1,29 @@
 import {
+  getAllTodos,
   getTodos,
   close,
   deleteTask,
   addTask,
   updateTask,
   searchTask,
+  completeTask,
 } from './db.js'
+
+export async function listAll() {
+  try {
+    const todos = await getAllTodos()
+    printTodos(todos)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
 
 export async function list() {
   try {
     const todos = await getTodos()
     printTodos(todos)
-  } catch (err) {
-    logError(err)
   } finally {
     close()
   }
@@ -26,17 +37,17 @@ export async function deleteTodo(id) {
   }
 }
 
-export async function add(task) {
+export async function add(newTask) {
   try {
-    await addTask(task)
+    await addTask(newTask)
   } finally {
     close()
   }
 }
 
-export async function updateTodo(id, task) {
+export async function updateTodo(id, newTask) {
   try {
-    await updateTask(id, task)
+    await updateTask(id, newTask)
   } finally {
     close()
   }
@@ -51,9 +62,18 @@ export async function searchTodo(taskWord) {
   }
 }
 
+export async function completeTodo(id) {
+  try {
+    await completeTask(id)
+  } finally {
+    close()
+  }
+}
+
 function printTodos(todos) {
   todos.forEach((todo) => {
-    console.info(`${todo.id}: ${todo.task}`)
+    const isComplete = todo.completed === 1 ? true : false
+    console.info(`${todo.id}: ${todo.task}, COMPLETED: ${isComplete}`)
   })
 }
 
