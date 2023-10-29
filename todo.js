@@ -4,6 +4,7 @@ import * as commands from './commands.js'
 const userInputs = process.argv
 const cmd = userInputs[2]
 const arg3 = userInputs[3]
+const arg4 = userInputs[4]
 
 switch (cmd) {
   case 'list':
@@ -11,11 +12,15 @@ switch (cmd) {
     break
 
   case 'delete':
-    await commands.deleteTask(arg3)
+    await commands.deleteTodo(arg3)
     break
 
   case 'add':
     await commands.add(arg3)
+    break
+
+  case 'update':
+    await commands.updateTodo(arg3, arg4)
     break
 
   default:

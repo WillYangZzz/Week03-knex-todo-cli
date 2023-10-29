@@ -12,10 +12,14 @@ export function close() {
   db.destroy()
 }
 
-export async function deleteTodo(id) {
+export async function deleteTask(id) {
   await db('todos').where('id', id).del()
 }
 
 export async function addTask(taskStr) {
   await db('todos').insert({ task: taskStr })
+}
+
+export async function updateTask(id, taskStr) {
+  await db('todos').update({ task: taskStr }).where('id', id)
 }
