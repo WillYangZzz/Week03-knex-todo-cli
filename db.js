@@ -11,8 +11,15 @@ export function getTodos() {
 export function close() {
   db.destroy()
 }
+
 //deleting task//
 
 export function deleteTask(id) {
-  return db('todos').select('id', id).delete()
+  return db('todos').where('id', id).delete()
+}
+
+// Adding a new task//
+
+export function addTask(string) {
+  return db('todos').insert({ task: string })
 }
