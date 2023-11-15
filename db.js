@@ -11,3 +11,8 @@ export function getTodos() {
 export function close() {
   db.destroy()
 }
+//deleting task//
+
+export function deleteTask(id) {
+  return db('todos').select('id', id).delete()
+}
