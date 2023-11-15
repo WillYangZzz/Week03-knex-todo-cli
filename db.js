@@ -23,3 +23,8 @@ export function deleteTask(id) {
 export function addTask(string) {
   return db('todos').insert({ task: string })
 }
+
+// updating a task//
+export function updateTask(id, string) {
+  return db('todos').where('id', id).update('task', string)
+}
