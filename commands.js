@@ -1,4 +1,11 @@
-import { getTodos, close, deleteTask, addTask, updateTask } from './db.js'
+import {
+  getTodos,
+  close,
+  deleteTask,
+  addTask,
+  updateTask,
+  searchTask,
+} from './db.js'
 
 function listCommands() {
   console.log(
@@ -54,6 +61,19 @@ export async function addTodo(string) {
 export async function updateTodo(id, task) {
   try {
     await updateTask(id, task)
+    const todos = await getTodos()
+    listCommands()
+    printTodos(todos)
+  } catch (error) {
+    logError(error)
+  } finally {
+    close()
+  }
+}
+//searching task//
+export async function searchTodo(task) {
+  try {
+    await searchTask(task)
     const todos = await getTodos()
     listCommands()
     printTodos(todos)

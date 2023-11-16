@@ -20,11 +20,17 @@ export function deleteTask(id) {
 
 // Adding a new task//
 
-export function addTask(string) {
-  return db('todos').insert({ task: string })
+export function addTask(task) {
+  return db('todos').insert({ task: task })
 }
 
 // updating a task//
-export function updateTask(id, string) {
-  return db('todos').where('id', id).update('task', string)
+export function updateTask(id, task) {
+  return db('todos').where('id', id).update('task', task)
+}
+
+// search task//
+
+export function searchTask(task) {
+  return db('todos').where('task', 'like', `${task}`)
 }
