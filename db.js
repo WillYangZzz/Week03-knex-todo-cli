@@ -12,3 +12,10 @@ export function close() {
   db.destroy()
 }
 
+export function deleteTodo(id) {
+  db('todos').where('id', id).del()
+}
+
+export function add(newTask) {
+  return db('todos').insert({ task: newTask })
+}
