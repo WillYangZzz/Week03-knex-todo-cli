@@ -19,7 +19,10 @@ switch (cmd) {
     await commands.updateContent(userInputs[3], userInputs[4])
     break
   case 'complete':
-    await commands.checkComplete(userInputs[3], userInputs[4])
+    await commands.checkComplete(userInputs[3])
+    break
+  case 'undo':
+    await commands.undoTask(userInputs[3])
     break
   case 'search':
     await commands.searchTasks(userInputs[3])

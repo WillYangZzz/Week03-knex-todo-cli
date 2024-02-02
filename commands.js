@@ -6,6 +6,7 @@ import {
   updateTask,
   taskComplete,
   searchTask,
+  unTodo,
 } from './db.js'
 
 export async function list() {
@@ -58,9 +59,19 @@ export async function updateContent(id, content) {
   }
 }
 
-export async function checkComplete(id, completeStatus) {
+export async function checkComplete(id) {
   try {
-    await taskComplete(id, completeStatus)
+    await taskComplete(id)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function undoTask(id) {
+  try {
+    await unTodo(id)
   } catch (err) {
     logError(err)
   } finally {
@@ -71,7 +82,11 @@ export async function checkComplete(id, completeStatus) {
 export async function searchTasks(keyword) {
   try {
     const searchedTask = await searchTask(keyword)
-    printTodos(searchedTask)
+    if (searchedTask.length > 0) {
+      printTodos(searchedTask)
+    } else {
+      console.log(`No tasks found containing '${searchedTask}'`)
+    }
   } catch (err) {
     logError(err)
   } finally {

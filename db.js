@@ -33,5 +33,5 @@ export function unTodo(taskId) {
 }
 
 export function searchTask(searchTerm) {
-  return db('todos').where('task', 'like', `%${searchTerm}%`).select()
+  return db('todos').whereLike('task', `%${searchTerm}%`).select()
 }
