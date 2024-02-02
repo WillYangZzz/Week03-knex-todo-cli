@@ -13,7 +13,7 @@ export function close() {
 }
 
 export function deleteTodo(id) {
-  db('todos').where('id', id).del()
+  return db('todos').where('id', id).del()
 }
 
 export function addTask(newTask) {
