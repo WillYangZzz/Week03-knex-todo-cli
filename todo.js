@@ -18,6 +18,9 @@ switch (cmd) {
   case 'update':
     await commands.updateContent(userInputs[3], userInputs[4])
     break
+  case 'complete':
+    await commands.checkComplete(userInputs[3], userInputs[4])
+    break
 
   default:
     console.log(`I don't understand that command: ${cmd}`)
