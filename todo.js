@@ -9,6 +9,9 @@ switch (cmd) {
     await commands.list()
     break
 
+  case 'done':
+    await commands.done(userInputs[3])
+
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }
