@@ -24,8 +24,12 @@ export function updateTask(taskId, content) {
   return db('todos').where('id', taskId).update({ task: content })
 }
 
-export function taskComplete(taskId, completeStatus) {
-  return db('todos').where({ id: taskId }).update({ complete: completeStatus })
+export function taskComplete(taskId) {
+  return db('todos').where({ id: taskId }).update({ isCompleted: true })
+}
+
+export function unTodo(taskId) {
+  return db('todos').where({ id: taskId }).update({ isCompleted: false })
 }
 
 export function searchTask(searchTerm) {
