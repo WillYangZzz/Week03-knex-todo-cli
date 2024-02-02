@@ -56,3 +56,13 @@ export async function updateContent(id, content) {
     close()
   }
 }
+
+export async function checkComplete(id, completeStatus) {
+  try {
+    await taskComplete(id, completeStatus)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
