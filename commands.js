@@ -1,9 +1,8 @@
-import { c } from 'vitest/dist/reporters-5f784f42.js'
 import {
   getTodos,
   close,
   deleteTodo,
-  add,
+  addTask,
   updateTask,
   taskComplete,
 } from './db.js'
@@ -31,6 +30,26 @@ function logError(err) {
 export async function done(id) {
   try {
     await deleteTodo(id)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function add(taskName) {
+  try {
+    await addTask(taskName)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function updateContent(id, content) {
+  try {
+    await updateTask(id, content)
   } catch (err) {
     logError(err)
   } finally {
