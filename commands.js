@@ -5,6 +5,7 @@ import {
   addTask,
   updateTask,
   taskComplete,
+  searchTask,
 } from './db.js'
 
 export async function list() {
@@ -60,6 +61,17 @@ export async function updateContent(id, content) {
 export async function checkComplete(id, completeStatus) {
   try {
     await taskComplete(id, completeStatus)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function searchTasks(keyword) {
+  try {
+    const searchedTask = await searchTask(keyword)
+    printTodos(searchedTask)
   } catch (err) {
     logError(err)
   } finally {

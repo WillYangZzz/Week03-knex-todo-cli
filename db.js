@@ -27,3 +27,7 @@ export function updateTask(taskId, content) {
 export function taskComplete(taskId, completeStatus) {
   return db('todos').where({ id: taskId }).update({ complete: completeStatus })
 }
+
+export function searchTask(searchTerm) {
+  return db('todos').where('task', 'like', `%${searchTerm}%`).select()
+}
